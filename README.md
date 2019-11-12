@@ -8,28 +8,6 @@ Data (RobinsonEtAl_Sup1.csv) was downloaded from:
 Robinson, JM. et al. 2019. Complete blood count with differential: An effective diagnostic for IBS subtype in the context of BMI? BioRxiv. doi: https://doi.org/10.1101/608208.
 
 
-## Assign "HIGH", "NORMAL", or "LOW" based on clinical range to the Monocytes_result parameter
-
-IBS1$Monocytes_result[IBS1$Monocytes > 0.8] <- "HIGH"
-
-IBS1$Monocytes_result[IBS1$Monocytes <= 0.8 & IBS1$Monocytes >= 0.2] <- "NORMAL"
-
-IBS1$Monocytes_result[IBS1$Monocytes < 0.2] <- "LOW"
-
-write.csv(IBS1, "data_output/Monocytes.csv")
-
-
-## Assign "HIGH", "NORMAL", or "LOW" based on clinical range to the Monocytes_PCT_result parameter
-
-IBS1$Monocytes_PCT_result[IBS1$Monocytes_PCT > 12] <- "HIGH"
-
-IBS1$Monocytes_PCT_result[IBS1$Monocytes_PCT <= 12 & IBS1$Monocytes_PCT >= 5] <- "NORMAL"
-
-IBS1$Monocytes_PCT_result[IBS1$Monocytes_PCT < 5] <- "LOW"
-
-write.csv(IBS1, "data_output/Monocytes_PCT.csv")
-
-
 ## Results of Single Regression Test, BMI vs. Bloodwork parameter
 
 Monocytes.regression <- lm(BMI ~ Monocytes, data = IBS1)
@@ -45,9 +23,9 @@ Residuals:
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
 (Intercept)  26.5538     1.6256  16.335   <2e-16 ***
-Monocytes     0.4434     3.3746   0.131    0.896    
+> Monocytes     0.4434     3.3746   0.131    0.896    
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 6.073 on 104 degrees of freedom
   (5 observations deleted due to missingness)
@@ -69,9 +47,9 @@ Residuals:
 Coefficients:
               Estimate Std. Error t value Pr(>|t|)    
 (Intercept)    27.8968     1.9487   14.31   <2e-16 ***
-Monocytes_PCT  -0.1520     0.2576   -0.59    0.556    
+> Monocytes_PCT  -0.1520     0.2576   -0.59    0.556    
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 6.051 on 106 degrees of freedom
   (3 observations deleted due to missingness)
