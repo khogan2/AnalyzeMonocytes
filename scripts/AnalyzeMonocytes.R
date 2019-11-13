@@ -52,12 +52,6 @@ summary(single.regression)
 ## Scatterplots
 ## https://www.statmethods.net/graphs/scatterplot.html
 
-# Add fit lines
-plot(IBS1$BMI, IBS1$Monocytes, main="Scatterplot Example", 
-     xlab="Monocytes ", ylab="BMI ", pch=19)
-abline(lm(IBS1$Monocytes~IBS1$BMI), col="red") # regression line (y~x)
-lines(lowess(IBS1$Monocytes,IBS1$BMI), col="blue") # lowess line (x,y)
-
 ggplot(IBS1, aes(x=BMI, y=Monocytes)) +
   geom_point() +    
   geom_smooth(method=lm) 
@@ -128,12 +122,6 @@ dev.off()
 
 ## Box plots
 ## https://www.statmethods.net/graphs/boxplot.html
-
-# Notched Boxplot of Monocytes_PCT by IBS subtype
-# boxes colored for ease of interpretation 
-boxplot(len~supp*dose, data=ToothGrowth, notch=TRUE, 
-        col=(c("gold","darkgreen")),
-        main="Monocytes", xlab="BMI")
 
 boxplot(Monocytes ~ IBS.subtype, data = IBS1, main="Monocytes by IBS subtype", 
         xlab = "IBS.subtype", ylab = "Monocytes"
